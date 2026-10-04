@@ -1,0 +1,23 @@
+# Sigil + Caddy (automatic HTTPS). Point a domain at this machine, set SIGIL_DOMAIN, then:
+#   SIGIL_DOMAIN=sigil.example.com FINGERPRINT_SECRET=$(openssl rand -hex 32) docker compose up -d
+services:
+  sigil:
+    build: .
+    restart: unless-stopped
+    environment:
+      PUBLIC_ORIGIN: https://${SIGIL_DOMAIN}
+      FINGERPRINT_SECRET: ${FINGERPRINT_SECRET:?set FINGERPRINT_SECRET}
+      TRUST_PROXY: "true"
+      INVITE_ONLY: ${INVITE_ONLY:-true}
+    volumes:
+      - sigil-data:/data
+  caddy:
+    image: caddy:2
+    restart: unless-stopped
+    ports: ["80:80", "443:443"]
+    command: caddy reverse-proxy --from ${SIGIL_DOMAIN} --to sigil:8787
+    volumes:
+      - caddy-data:/data
+volumes:
+  sigil-data:
+  caddy-data:

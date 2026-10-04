@@ -1,0 +1,10 @@
+{
+  "name": "sigil-monorepo",
+  "private": true,
+  "scripts": {
+    "setup": "npm --prefix server install && npm --prefix app install",
+    "server": "npm --prefix server start",
+    "app": "npm --prefix app start",
+    "test": "npm --prefix server test && npm --prefix app test"
+  }
+}

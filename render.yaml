@@ -1,0 +1,25 @@
+# Render Blueprint: New > Blueprint > pick this repo. Builds the Dockerfile.
+#
+# plan: free  -> costs nothing, but sleeps after 15 minutes idle and its storage is
+#                wiped when it sleeps or redeploys: accounts and profiles reset.
+# To keep data: change plan to starter and uncomment the disk block (paid).
+services:
+  - type: web
+    name: sigil
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: FINGERPRINT_SECRET
+        generateValue: true
+      - key: TRUST_PROXY
+        value: "true"
+      - key: INVITE_ONLY
+        value: "false"
+      - key: DATA_DIR
+        value: /data
+    # disk:
+    #   name: sigil-data
+    #   mountPath: /data
+    #   sizeGB: 1
