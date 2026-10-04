@@ -1,0 +1,34 @@
+# Render Blueprint: New > Blueprint > pick this repo. Builds the Dockerfile.
+#
+# plan: free  -> costs nothing, but sleeps after 15 minutes idle and its storage is
+#                wiped when it sleeps or redeploys: accounts and profiles reset.
+# To keep data: change plan to starter and uncomment the disk block (paid).
+services:
+  - type: web
+    name: sigil
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    envVars:
+      - key: FINGERPRINT_SECRET
+        generateValue: true
+      - key: TRUST_PROXY
+        value: "true"
+      - key: INVITE_ONLY
+        value: "false"
+      - key: DATA_DIR
+        value: /data
+      # Your username. Only someone with OWNER_CODE can sign up with it, and it's the only staff account.
+      - key: OWNER_USERNAME
+        value: hack
+      # Find it in Render: your service > Environment > OWNER_CODE (click the eye to show it).
+      - key: OWNER_CODE
+        generateValue: true
+      # Names anyone can take straight away (comma-separated).
+      - key: OPEN_NAMES
+        value: n
+    # disk:
+    #   name: sigil-data
+    #   mountPath: /data
+    #   sizeGB: 1
