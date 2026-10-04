@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- The UI can't make network requests at all (connect-src 'none'); all
+       network + crypto happens in the main process. Images come from the server. -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: http: https:; media-src blob:; connect-src 'none'; font-src 'self' data:; base-uri 'none'; form-action 'none'">
+  <meta name="color-scheme" content="dark">
+  <title>Sigil</title>
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <div id="root"></div>
+  <script src="app.js"></script>
+</body>
+</html>

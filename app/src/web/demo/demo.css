@@ -1,0 +1,31 @@
+/* Demo-only panel. Sits bottom-left, clear of the composer and thread tools. */
+.demo { position: fixed; left: 80px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); z-index: 40; width: min(340px, calc(100vw - 32px)); display: flex; flex-direction: column-reverse; align-items: flex-start; gap: 8px; pointer-events: none; }
+.demo.onboarding { left: 16px; }
+.demo > * { pointer-events: auto; }
+.demo-tab { display: inline-flex; align-items: center; gap: 8px; height: 30px; padding: 0 12px; border-radius: 15px; border: 1px solid var(--line-2); background: #1d1e26; color: var(--text); font: 600 12.5px var(--ui); box-shadow: 0 10px 30px -10px rgba(0,0,0,.7); }
+.demo-tab i { width: 7px; height: 7px; border-radius: 50%; background: var(--warn); box-shadow: 0 0 8px var(--warn); }
+.demo-body { background: #1a1b22; border: 1px solid var(--line-2); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 12px; box-shadow: 0 24px 60px -16px rgba(0,0,0,.85); font-size: 12.5px; color: var(--muted); line-height: 1.5; max-height: 60vh; overflow: auto; }
+.demo-body p { color: var(--text); }
+.demo-invite { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 10px; background: var(--bg-2); border: 1px dashed var(--accent); }
+.demo-invite span { color: var(--muted); }
+.demo-invite code { font: 700 15px var(--mono); letter-spacing: .1em; color: var(--text); margin-right: auto; }
+.demo-invite button, .demo-actions button { height: 28px; padding: 0 10px; border-radius: 8px; border: 1px solid var(--line-2); background: var(--panel-2); font-weight: 600; font-size: 12px; }
+.demo-invite button:hover, .demo-actions button:hover { background: #2a2b35; }
+.demo-relay { display: flex; flex-direction: column; gap: 6px; }
+.demo-relay h4 { font-size: 12.5px; color: var(--text); }
+.demo-relay code { font: 500 10.5px/1.45 var(--mono); color: #7fd8a5; background: #0d0e12; border: 1px solid var(--line); border-radius: 8px; padding: 8px; word-break: break-all; user-select: text; }
+.demo-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.demo-fine { color: var(--faint); }
+@media (max-width: 720px) {
+  .demo { left: auto; right: 12px; align-items: flex-end; bottom: calc(140px + env(safe-area-inset-bottom, 0px)); }
+  .demo.onboarding { left: 16px; right: auto; align-items: flex-start; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+}
+.demo-tab code { font: 700 12px var(--mono); letter-spacing: .08em; color: var(--accent); }
+.demo-login { display: flex; flex-direction: column; gap: 6px; padding: 12px; border-radius: 10px; background: var(--bg-2); border: 1px solid var(--line-2); }
+.demo-login h4 { font-size: 12.5px; color: var(--text); margin-bottom: 2px; }
+.demo-login label { font-size: 11.5px; font-weight: 600; color: var(--muted); }
+.demo-login input { height: 34px; padding: 0 10px; border-radius: 8px; border: 1px solid var(--line-2); background: var(--bg); outline: none; font-size: 13.5px; }
+.demo-login input:focus { border-color: var(--accent); }
+.demo-login button { margin-top: 6px; height: 34px; border-radius: 9px; border: 0; background: var(--accent); color: #0c0c10; font-weight: 700; font-size: 13px; }
+.demo-login button:disabled { opacity: .45; }
+.demo-error { color: #ff9aa4; }

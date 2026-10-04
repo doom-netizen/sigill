@@ -1,0 +1,22 @@
+{
+  "name": "sigil-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Sigil relay + identity server: usernames, public profiles, encrypted relay. Stores no messages.",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "start": "tsx src/index.ts",
+    "admin": "tsx src/cli.ts",
+    "typecheck": "tsc --noEmit -p .",
+    "test": "tsx --test ../shared/*.test.ts test/*.test.ts"
+  },
+  "engines": { "node": ">=22.13" },
+  "dependencies": {
+    "sharp": "^0.34.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}
